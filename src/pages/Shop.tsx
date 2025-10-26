@@ -38,7 +38,7 @@ const Shop = () => {
 
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in-up">
             <h1 className="text-5xl font-serif mb-4">Shop Matcha</h1>
             <p className="text-muted-foreground text-lg">
               Authentic ceremonial-grade matcha, delivered fresh from Japan
@@ -46,16 +46,17 @@ const Shop = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-24">
-            {products.map((product) => (
+            {products.map((product, index) => (
               <div
                 key={product.id}
-                className="bg-card border border-border rounded-lg overflow-hidden shadow-elegant transition-smooth hover:scale-105"
+                className={`bg-card border border-border rounded-lg overflow-hidden shadow-elegant hover-lift animate-fade-in-up stagger-${(index % 3) + 1} opacity-0`}
+                style={{ animationFillMode: 'forwards' }}
               >
-                <div className="aspect-square overflow-hidden">
+                <div className="aspect-square overflow-hidden group">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
                 <div className="p-6 space-y-4">
@@ -70,7 +71,7 @@ const Shop = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <p className="text-2xl font-serif">{product.price}</p>
-                    <Button variant="luxury">Add to Cart</Button>
+                    <Button variant="luxury" className="hover-glow">Add to Cart</Button>
                   </div>
                 </div>
               </div>
@@ -78,7 +79,7 @@ const Shop = () => {
           </div>
 
           {/* Starter Kit CTA */}
-          <section className="py-16 bg-secondary rounded-lg">
+          <section className="py-16 bg-secondary rounded-lg animate-scale-in">
             <div className="container mx-auto px-6 text-center">
               <div className="max-w-3xl mx-auto space-y-8">
                 <h2 className="text-4xl font-serif">
@@ -88,7 +89,7 @@ const Shop = () => {
                   Discover the purity of ceremonial-grade matcha. Start your journey with the brumaa Essentials Kit.
                 </p>
                 <Link to="/subscription">
-                  <Button variant="luxury" size="lg">
+                  <Button variant="luxury" size="lg" className="hover-glow hover-scale">
                     Subscribe & Save
                   </Button>
                 </Link>

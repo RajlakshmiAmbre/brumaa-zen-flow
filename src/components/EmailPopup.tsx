@@ -32,15 +32,15 @@ export const EmailPopup = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-md bg-background border-border">
+      <DialogContent className="max-w-md bg-background border-border animate-scale-in">
         <button
           onClick={handleClose}
-          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-smooth hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-smooth hover:opacity-100 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
           <X className="h-4 w-4" />
         </button>
         
-        <DialogHeader className="space-y-4 pt-6">
+        <DialogHeader className="space-y-4 pt-6 animate-fade-in-up">
           <DialogTitle className="text-3xl font-serif text-center">
             Want 10% Off Japan's Best Matcha?
           </DialogTitle>
@@ -49,7 +49,7 @@ export const EmailPopup = () => {
           </p>
         </DialogHeader>
 
-        <div className="space-y-6 pt-4">
+        <div className="space-y-6 pt-4 animate-fade-in-up stagger-2 opacity-0" style={{ animationFillMode: 'forwards' }}>
           <p className="text-center text-sm text-muted-foreground px-4">
             Join the journey behind the making of brumaa — be the first to get exclusive updates and early access
           </p>
@@ -61,9 +61,9 @@ export const EmailPopup = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="text-center"
+              className="text-center transition-smooth focus:shadow-elegant"
             />
-            <Button type="submit" variant="luxury" className="w-full">
+            <Button type="submit" variant="luxury" className="w-full hover-glow hover-scale">
               Subscribe
             </Button>
           </form>
