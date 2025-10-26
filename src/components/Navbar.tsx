@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/brumaa-logo.jpg";
 
 export const Navbar = () => {
   const location = useLocation();
@@ -16,8 +17,12 @@ export const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-serif tracking-tight">
-            brumaa
+          <Link to="/" className="flex items-center">
+            <img 
+              src={logo} 
+              alt="brumaa" 
+              className="h-8 w-auto"
+            />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

@@ -38,22 +38,34 @@ const Index = () => {
       <EmailPopup />
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Hero Section with Video */}
       <section className="relative h-screen pt-16">
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Premium matcha in elegant ceramic bowl"
+          {/* TODO: Replace src with your 4K HD video URL */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
+            poster={heroImage}
+          >
+            <source src="/path-to-your-video.mp4" type="video/mp4" />
+            {/* Fallback image if video doesn't load */}
+            <img
+              src={heroImage}
+              alt="Premium matcha in elegant ceramic bowl"
+              className="w-full h-full object-cover"
+            />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background" />
         </div>
         <div className="relative h-full flex items-center justify-center text-center">
           <div className="space-y-6 px-6">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif tracking-tight">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif tracking-tight text-white">
               brumaa
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 font-light max-w-2xl mx-auto">
               Quiet luxury meets mindful ritual
             </p>
           </div>
