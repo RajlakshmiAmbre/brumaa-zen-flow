@@ -1,12 +1,176 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { EmailPopup } from "@/components/EmailPopup";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import heroImage from "@/assets/hero-matcha.jpg";
+import productImage from "@/assets/matcha-product.jpg";
+import storyImage from "@/assets/story-image.jpg";
+import { Leaf, Zap, Heart, Sparkles, Clock, Mountain } from "lucide-react";
 
 const Index = () => {
+  const properties = [
+    { icon: Mountain, text: "Directly from Japan's finest tea gardens" },
+    { icon: Heart, text: "A natural source of calm, balanced energy" },
+    { icon: Sparkles, text: "Packed with antioxidants to support vitality" },
+    { icon: Leaf, text: "Shade-grown longer for a richer nutrient profile" },
+    { icon: Zap, text: "Sustained energy for 4–6 hours without the crash" },
+    { icon: Clock, text: "Freshly stone-ground in small batches, farm-to-cup" },
+  ];
+
+  const benefits = [
+    {
+      title: "Hand-picked Excellence",
+      description: "Matcha is a powerhouse of antioxidants, amino acids, and vitamins, delivering more nutrients than traditional tea by using the whole leaf. Rich in EGCG catechins to support immunity, chlorophyll for natural detox, and L-theanine for calm focus."
+    },
+    {
+      title: "Naturally Energizing",
+      description: "Matcha delivers a smooth, sustained boost of energy by combining moderate caffeine with the calming amino acid L-theanine. This unique synergy promotes steady alertness and mental clarity for hours without spikes or crashes."
+    },
+    {
+      title: "Promotes Longevity",
+      description: "Packed with antioxidants, matcha helps the body fight everyday oxidative stress. Its rich catechin content supports slower cellular wear, making it a mindful addition to a long-term wellness routine."
+    }
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <EmailPopup />
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="relative h-screen pt-16">
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt="Premium matcha in elegant ceramic bowl"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background" />
+        </div>
+        <div className="relative h-full flex items-center justify-center text-center">
+          <div className="space-y-6 px-6">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif tracking-tight">
+              brumaa
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto">
+              Quiet luxury meets mindful ritual
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Properties Section */}
+      <section className="py-24 bg-secondary">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-serif text-center mb-16">Why Brumaa Matcha</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {properties.map((prop, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-4 p-6 bg-background rounded-lg shadow-elegant transition-smooth hover:scale-105"
+              >
+                <prop.icon className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <p className="text-sm leading-relaxed">{prop.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product Shop Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="relative aspect-square">
+                <img
+                  src={productImage}
+                  alt="Premium matcha powder"
+                  className="w-full h-full object-cover rounded-lg shadow-elegant"
+                />
+              </div>
+              <div className="space-y-6 text-center md:text-left">
+                <h2 className="text-4xl font-serif">Ceremonial Grade Matcha</h2>
+                <p className="text-muted-foreground">
+                  Experience the finest ceremonial-grade matcha, stone-ground to perfection
+                </p>
+                <Link to="/shop">
+                  <Button variant="luxury" size="lg">
+                    Shop Now
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story Teaser */}
+      <section className="py-24 bg-secondary">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <h2 className="text-4xl font-serif">Our Story</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  brumaa is an India-founded lifestyle brand built on quality and shaped by a modern yet ritualistic approach to matcha. Founded by Jui Karkhele, we bridge the traditional and the contemporary.
+                </p>
+                <Link to="/our-story">
+                  <Button variant="luxuryOutline">
+                    Discover More
+                  </Button>
+                </Link>
+              </div>
+              <div className="relative aspect-[4/3]">
+                <img
+                  src={storyImage}
+                  alt="Matcha latte in elegant setting"
+                  className="w-full h-full object-cover rounded-lg shadow-elegant"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-serif text-center mb-16">The Matcha Difference</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="text-center space-y-4 p-8">
+                <h3 className="text-xl font-serif">{benefit.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {benefit.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Starter Kit CTA */}
+      <section className="py-24 bg-secondary">
+        <div className="container mx-auto px-6 text-center">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <h2 className="text-4xl md:text-5xl font-serif">
+              Start Your brumaa Matcha Moment
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Discover the purity of ceremonial-grade matcha. Start your journey with the brumaa Essentials Kit — designed to transform your daily cup into a mindful ritual.
+            </p>
+            <Link to="/subscription">
+              <Button variant="luxury" size="lg">
+                Start Your Journey
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };
